@@ -11,7 +11,7 @@ all: lab6
 
 # Creates an executable file for lab6 using:
 # 	- memory_mgmt.o
-lab6: 
+lab6: memory_mgmt.o
 	$(CC) $(CFLAGS) -o lab6 memory_mgmt.o 
 
 # Creates an object file for memory_mgmt.o using:
