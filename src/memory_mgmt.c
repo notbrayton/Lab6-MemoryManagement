@@ -307,8 +307,38 @@ int PRAlgo_OPT(const PageFrame * PageFrames, int num_frames, const int * PageAcc
 {
 	int frame_to_evict = 0;
 	/*TODO: fill in the code below */
-
-
+	
+	// holds next access time for the corresponding frame, nextAccess[i] = PageFrame[i]'s next access time. set as -1 if frame is not accessed again
+	int nextAccess[NUM_FRAMES];
+	// loop counters
+	int i, j;
+	// finds the next access time for each frame
+	for (i = 0; i < NUM_FRAMES; i++) {
+		for (j = current_access; j < NUM_ACCESSES; j++) {
+			// Store access time if PageFrame[i] is found in PageAccesses[], or set nextAccess value at -1
+			if (PageFrames[i].page_id == PageAccesses[j]) {
+				// J is the time of PageFrames[i]'s next access
+				nextAccess[i] = j;
+				// End the loop
+				j = NUM_ACCESSES;
+			} else { 
+				// Not found yet, set as -1
+				nextAccess[i] = -1;
+			}
+		}
+	}
+	// Parse the nextAccess array for the largest nextAccess time
+	for (i = 0; i < NUM_FRAMES; i++) {
+		// If a page's next access is -1, the page never gets accessed again
+		if (nextAccess[i] == -1) {
+			return i;
+		}
+		// new max found, set as frame_to_evict
+		if (nextAccess[i] > nextAccess[frame_to_evict]) {
+			frame_to_evict = i;
+		}
+	}
+		
 	return frame_to_evict;
 
 }
