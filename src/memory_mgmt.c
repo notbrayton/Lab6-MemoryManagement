@@ -326,9 +326,6 @@ int PRAlgo_OPT(const PageFrame * PageFrames, int num_frames, const int * PageAcc
 				nextAccess[i] = -1;
 			}
 		}
-	}
-	// Parse the nextAccess array for the largest nextAccess time
-	for (i = 0; i < NUM_FRAMES; i++) {
 		// If a page's next access is -1, the page never gets accessed again
 		if (nextAccess[i] == -1) {
 			return i;
