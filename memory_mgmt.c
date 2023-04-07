@@ -256,6 +256,13 @@ int PRAlgo_FIFO(const PageFrame * PageFrames, int num_frames, const int * PageAc
 	int frame_to_evict = 0;
 	/*TODO: fill in the code below */
 
+	// Parse the page frame array looking for the frame with the lowest arrival time
+	int i;
+	for (i = 0; i < num_frames; i++) {
+		if (PageFrames[i].time_of_arrival < PageFrames[frame_to_evict].time_of_arrival) {
+			frame_to_evict = i;
+		}
+	}
 
 	return frame_to_evict;
 }
@@ -274,6 +281,13 @@ int PRAlgo_LRU(const PageFrame * PageFrames, int num_frames, const int * PageAcc
 	int frame_to_evict = 0;
 	/*TODO: fill in the code below */
 
+	// Parse the array looking for the page with smallest time of access value
+	int i;
+	for (i = 0; i < num_frames; i++) {
+		if (PageFrames[i].time_of_access < PageFrames[frame_to_evict].time_of_access) {
+			frame_to_evict = i;
+		}
+	}
 
 	return frame_to_evict;
 
