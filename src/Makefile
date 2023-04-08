@@ -6,7 +6,7 @@ CC = gcc
 #	-Wall	turns on almost all compiler warnings
 CFLAGS = -g -Wall
 
-# Typing 'make' in the terminal will invoke this call to gol
+# Typing 'make' in the terminal will invoke this call to lab6
 all: lab6
 
 # Creates an executable file for lab6 using:
@@ -20,8 +20,8 @@ memory_mgmt.o: memory_mgmt.c
 	$(CC) $(CFLAGS) -c memory_mgmt.c
 
 # Typing 'make clean' will invoke a call to this section.
-# 'gol' removes the executable file.
+# 'lab6' removes the executable file.
 # '-.o' removes old object files.
 # '*~' removes backup files.
 clean:
-	$(RM) gol *.o *~
+	$(RM) lab6 *.o *~
