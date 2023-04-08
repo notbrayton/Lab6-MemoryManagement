@@ -7,6 +7,8 @@ CC = gcc
 CFLAGS = -g -Wall
 
 # Typing 'make' in the terminal will invoke this call to lab6
+#	- creates an executable lab6
+#	- run with: ./lab6
 all: lab6
 
 # Creates an executable file for lab6 using:
